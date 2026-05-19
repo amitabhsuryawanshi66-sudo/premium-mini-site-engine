@@ -1,0 +1,66 @@
+/* V5 Design Language Primitives */
+
+:root {
+  /* Fluid Typography - Pro Max Scale */
+  --v5-font-display: "Inter Tight", sans-serif;
+  --v5-font-body: "Inter", sans-serif;
+  
+  /* Intent-Based Elevation (Tactile Ink) */
+  --shadow-v5-ink: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-v5-floating: 0 24px 64px -12px rgba(0, 0, 0, 0.2);
+  --shadow-v5-inner: inset 0 0 40px rgba(255, 255, 255, 0.05);
+  
+  /* Precision Radius */
+  --radius-v5-pill: 9999px;
+  --radius-v5-intent: 2.5rem;
+  --radius-v5-editorial: 4.5rem;
+}
+
+/* Base Editorial Primitives */
+.v5-grid-editorial {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+
+/* V5 local glass surface; replaces legacy v4-glass dependency */
+.v5-glass {
+  @apply bg-black/40 backdrop-blur-2xl border border-white/10;
+}
+
+/* Niche-Native Button Evolution */
+.btn-v5-intent {
+  @apply px-12 py-7 rounded-full font-black text-xl uppercase tracking-tighter transition-all active:scale-95 flex items-center justify-center gap-4;
+  box-shadow: var(--shadow-v5-floating);
+  letter-spacing: -0.04em;
+}
+
+.btn-v5-ghost {
+  @apply px-8 py-5 rounded-full font-bold text-lg border border-white/10 hover:bg-white/5 transition-all flex items-center justify-center gap-3;
+}
+
+/* Dynamic Card Archetypes (No more uniform rectangles) */
+.card-v5-decision {
+  @apply bg-[#111111] border border-white/5 p-12 transition-all duration-1000 ease-[0.16,1,0.3,1];
+  border-radius: var(--radius-v5-editorial);
+}
+
+.card-v5-decision:hover {
+  @apply border-red-600/30 -translate-y-4;
+  box-shadow: 0 0 40px rgba(229, 62, 62, 0.1);
+}
+
+.card-v5-proof {
+  @apply bg-white/[0.02] p-10 rounded-[3rem] border border-white/5 flex flex-col gap-6;
+}
+
+/* Visual Narrative System */
+.narrative-v5-collage {
+  @apply relative overflow-hidden rounded-[4rem] shadow-v5-floating cursor-crosshair;
+}
+
+/* Android-First Thumb Dock */
+.v5-thumb-dock {
+  @apply fixed bottom-8 left-6 right-6 z-[100] p-2 bg-black/40 backdrop-blur-3xl border border-white/10 rounded-full flex gap-2 shadow-v5-floating;
+}
