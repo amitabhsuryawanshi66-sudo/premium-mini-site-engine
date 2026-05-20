@@ -1,70 +1,115 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { V5_DEMO_BUSINESSES } from './data/v5DemoBusinesses';
-import { NICHE_PLAYBOOKS } from './engine/nichePlaybooks';
-import { ARCHETYPES } from './engine/archetypeRegistry';
-import { IntentHero } from './components/IntentHero';
-import { DecisionDock } from './components/DecisionDock';
-import { InteractiveOfferBoard } from './components/InteractiveOfferBoard';
-import { ObjectionResolver } from './components/ObjectionResolver';
-import { VisualNarrative } from './components/VisualNarrative';
-import { ProofMap } from './components/ProofMap';
-import { FinalDecisionPanel } from './components/FinalDecisionPanel';
-import { V5Footer } from './components/V5Footer';
-import { NicheSignalStrip } from './components/NicheSignalStrip';
-import { StickyDecisionBar } from './components/StickyDecisionBar';
 
 export const V5App = () => {
   const [demoKey, setDemoKey] = useState('tattoo');
-  
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const d = params.get('demo');
-    if (d && V5_DEMO_BUSINESSES[d]) setDemoKey(d);
-  }, []);
-
   const business = V5_DEMO_BUSINESSES[demoKey];
-  const playbook = NICHE_PLAYBOOKS[business.niche];
-  const archetype = ARCHETYPES[business.archetype];
 
-  if (!business) return <div className="p-20 text-center font-black uppercase tracking-widest text-red-500">Engine Error: Niche not found.</div>;
-
-  const componentMap = {
-    hero: <IntentHero key="hero" business={business} playbook={playbook} />,
-    signals: <NicheSignalStrip key="signals" business={business} />,
-    decision_dock: <DecisionDock key="dock" business={business} playbook={playbook} />,
-    visual_narrative: <VisualNarrative key="gallery" business={business} />,
-    offers: <InteractiveOfferBoard key="offers" business={business} playbook={playbook} />,
-    proof: <ProofMap key="proof" business={business} />,
-    objection_resolver: <ObjectionResolver key="faq" business={business} />,
-    close: <FinalDecisionPanel key="close" business={business} playbook={playbook} />
-  };
+  if (!business) return <div>Business not found</div>;
 
   return (
-    <div 
-      className={`min-h-screen archetype-${business.archetype} selection:bg-red-600 selection:text-white`}
-      style={{ 
-        '--brand-primary': business.theme.primary, 
-        '--brand-accent': business.theme.accent,
-        '--glow-color': `${business.theme.accent}22`
-      }}
-    >
-      {/* V5 Pro Max Demo Switcher */}
-      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-[110] bg-white/5 backdrop-blur-xl border border-white/10 p-1.5 rounded-full flex gap-1 shadow-v5-floating">
-        {Object.keys(V5_DEMO_BUSINESSES).map(key => (
+    <div className="v5-app">
+      {/* Demo Switcher */}
+      <div className="v5-demo-switcher">
+        {Object.keys(V5_DEMO_BUSINESSES).map((key) => (
           <button
             key={key}
             onClick={() => setDemoKey(key)}
-            className={`px-6 py-2.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] transition-all ${demoKey === key ? 'bg-white text-black shadow-v5-floating' : 'text-white/40 hover:text-white'}`}
+            className={`v5-switcher-chip ${demoKey === key ? 'is-active' : ''}`}
           >
-            {key}
+            {V5_DEMO_BUSINESSES[key].switcherLabel}
           </button>
         ))}
       </div>
 
-      {playbook.sectionFlow.map(sectionId => componentMap[sectionId])}
-      
-      <V5Footer business={business} />
-      <StickyDecisionBar business={business} playbook={playbook} />
+      {/* Hero Section */}
+      <section className="v5-hero">
+        <span className="v5-badge">{business.badge}</span>
+        <h1 className="v5-headline">{business.headline}</h1>
+        <p className="v5-subheadline">{business.subheadline}</p>
+        <p className="v5-location">{business.location} — {business.businessName}</p>
+        <div className="v5-hero-ctas">
+          <button className="v5-btn-primary">{business.primaryCta}</button>
+          <button className="v5-btn-secondary">{business.secondaryCta}</button>
+        </div>
+      </section>
+
+      {/* Intent Buttons */}
+      <section className="v5-section">
+        <h2 className="v5-section-title">What are you looking for?</h2>
+        <div className="v5-intent-grid">
+          {business.intents.map((intent, idx) => (
+            <button key={idx} className="v5-intent-btn">{intent}</button>
+          ))}
+        </div>
+      </section>
+
+      {/* Offer Cards */}
+      <section className="v5-section">
+        <h2 className="v5-section-title">Exclusive Offers</h2>
+        <div className="v5-card-grid">
+          {business.offers.map((offer) => (
+            <div key={offer.id} className="v5-card">
+              <h3>{offer.title}</h3>
+              <p>{offer.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Proof Cards */}
+      <section className="v5-section">
+        <h2 className="v5-section-title">Why Trust Us?</h2>
+        <div className="v5-proof-grid">
+          {business.proof.map((item, idx) => (
+            <div key={idx} className="v5-proof-card">{item}</div>
+          ))}
+        </div>
+      </section>
+
+      {/* Visual/Story Cards */}
+      <section className="v5-section">
+        <h2 className="v5-section-title">Our Process</h2>
+        <div className="v5-story-grid">
+          {business.visualStory.map((step, idx) => (
+            <div key={idx} className="v5-story-card">
+              <span className="v5-step-num">{idx + 1}</span>
+              <p>{step}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Objection Cards */}
+      <section className="v5-section">
+        <h2 className="v5-section-title">Common Questions</h2>
+        <div className="v5-objection-grid">
+          {business.objections.map((obj, idx) => (
+            <div key={idx} className="v5-objection-card">
+              <h4>{obj.q}</h4>
+              <p>{obj.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Final WhatsApp CTA */}
+      <section className="v5-final-cta-section">
+        <a
+          href={`https://wa.me/${business.whatsappNumber}`}
+          className="v5-sticky-whatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {business.finalCta}
+        </a>
+      </section>
+
+      {/* Footer */}
+      <footer className="v5-footer">
+        <p>Premium Mini Site V5 — Niche Engine Build</p>
+        <a href={business.instagramUrl} target="_blank" rel="noopener noreferrer">Follow us on Instagram</a>
+      </footer>
     </div>
   );
 };
