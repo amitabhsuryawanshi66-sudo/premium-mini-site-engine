@@ -1,263 +1,414 @@
-/* V5 Plain CSS Reset & Base */
+/* V5 Pro Max Design System - Pitch Ready */
+
+:root {
+  --ease-emil: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-tactile: 0 4px 12px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #0A0A0A;
-  color: #FFFFFF;
-  line-height: 1.5;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.5s var(--ease-emil);
 }
 
 /* V5 App Container */
 .v5-app {
-  max-width: 500px;
+  max-width: 440px;
   margin: 0 auto;
-  padding-bottom: 100px; /* Space for sticky CTA */
   min-height: 100vh;
-  background-color: #0A0A0A;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Demo Switcher */
+/* Texture Overlays (Taste-style) */
+.v5-app::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Demo Switcher - Glassmorphism */
 .v5-demo-switcher {
   position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(10px);
+  top: 12px;
+  margin: 0 16px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding: 16px;
-  border-bottom: 1px solid #222;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-glass);
 }
 
 .v5-switcher-chip {
-  background: #222;
-  color: #888;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.4);
   border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s var(--ease-emil);
+  flex: 1;
 }
 
 .v5-switcher-chip.is-active {
-  background: #FFFFFF;
-  color: #0A0A0A;
+  background: var(--brand-accent);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Hero Area */
+/* Hero Section - Asymmetric Editorial */
 .v5-hero {
-  padding: 60px 24px;
-  text-align: center;
+  padding: 80px 24px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .v5-badge {
-  display: inline-block;
-  background: #111;
-  border: 1px solid #333;
-  padding: 4px 12px;
-  border-radius: 4px;
+  align-self: flex-start;
+  background: var(--brand-accent);
+  color: #FFFFFF;
+  padding: 6px 14px;
+  border-radius: 100px;
   font-size: 10px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 16px;
-  color: #AAA;
+  letter-spacing: 1.5px;
+  animation: slideIn 0.8s var(--ease-emil);
 }
 
 .v5-headline {
-  font-size: 36px;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 16px;
-  letter-spacing: -0.5px;
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  margin-top: 8px;
+}
+
+.v5-headline .accent {
+  color: var(--brand-accent);
+  font-style: italic;
+  font-family: serif;
+  letter-spacing: -1px;
 }
 
 .v5-subheadline {
-  font-size: 16px;
-  color: #888;
-  margin-bottom: 24px;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0.7;
+  max-width: 90%;
 }
 
-.v5-location {
-  font-size: 12px;
+.v5-location-tag {
+  font-size: 11px;
   font-weight: 700;
-  color: #555;
   text-transform: uppercase;
-  margin-bottom: 32px;
-}
-
-.v5-hero-ctas {
+  letter-spacing: 1px;
+  opacity: 0.5;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: 6px;
 }
 
-.v5-btn-primary {
-  background: #FFFFFF;
-  color: #000000;
-  border: none;
-  padding: 16px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 16px;
-  cursor: pointer;
+.v5-location-tag::before {
+  content: "";
+  width: 12px;
+  height: 1px;
+  background: currentColor;
 }
 
-.v5-btn-secondary {
-  background: transparent;
-  color: #FFFFFF;
-  border: 1px solid #333;
-  padding: 16px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* Section Common */
+/* Intent Selector - Tactile Grid */
 .v5-section {
   padding: 48px 24px;
-  border-top: 1px solid #111;
 }
 
 .v5-section-title {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.4;
   margin-bottom: 24px;
-  color: #EEE;
 }
 
-/* Intent Buttons */
 .v5-intent-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   gap: 12px;
 }
 
 .v5-intent-btn {
-  background: #111;
-  border: 1px solid #222;
-  color: #EEE;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
+  background: var(--brand-surface);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-emil);
   text-align: left;
 }
 
-/* Cards (Offers, Objections) */
-.v5-card-grid, .v5-objection-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.v5-intent-btn:active {
+  transform: scale(0.95);
 }
 
-.v5-card, .v5-objection-card {
-  background: #111;
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid #222;
-}
-
-.v5-card h3, .v5-objection-card h4 {
-  font-size: 18px;
-  margin-bottom: 8px;
-  color: #FFF;
-}
-
-.v5-card p, .v5-objection-card p {
-  font-size: 14px;
-  color: #888;
-}
-
-/* Proof Grid */
-.v5-proof-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.v5-proof-card {
-  background: #111;
-  padding: 16px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  text-align: center;
-  border: 1px dashed #333;
-}
-
-/* Story Grid */
-.v5-story-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.v5-story-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: #000;
-  padding: 16px;
-  border-radius: 8px;
-}
-
-.v5-step-num {
+.v5-intent-icon {
   font-size: 24px;
-  font-weight: 900;
-  color: #333;
 }
 
-/* Final Sticky CTA */
-.v5-final-cta-section {
+.v5-intent-label {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Offers - Bento Card System */
+.v5-offer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.v5-offer-card {
+  background: var(--brand-surface);
+  border-radius: 24px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s var(--ease-emil);
+}
+
+.v5-offer-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--brand-accent);
+  color: #FFF;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 6px 12px;
+  border-bottom-left-radius: 12px;
+  text-transform: uppercase;
+}
+
+.v5-offer-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.v5-offer-desc {
+  font-size: 14px;
+  opacity: 0.6;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.v5-offer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.v5-offer-price {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.v5-btn-inline {
+  background: var(--brand-accent);
+  color: #FFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Proof Section - Stats Flow */
+.v5-proof-row {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.v5-proof-item {
+  flex-shrink: 0;
+}
+
+.v5-proof-count {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.v5-proof-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* Visual Story - Vertical Chapter Layout */
+.v5-story-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.v5-story-step {
+  display: flex;
+  gap: 20px;
+}
+
+.v5-story-num {
+  font-family: serif;
+  font-style: italic;
+  font-size: 48px;
+  line-height: 0.8;
+  opacity: 0.2;
+}
+
+.v5-story-content h4 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.v5-story-content p {
+  font-size: 14px;
+  opacity: 0.6;
+  line-height: 1.5;
+}
+
+/* Objections - Minimalist Accordion Style */
+.v5-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.v5-faq-item h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.v5-faq-item p {
+  font-size: 14px;
+  opacity: 0.6;
+  line-height: 1.6;
+}
+
+/* Final Sticky CTA - Conversional Precision */
+.v5-cta-dock {
   position: fixed;
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 48px);
-  max-width: 452px;
-  z-index: 100;
+  width: calc(100% - 32px);
+  max-width: 400px;
+  z-index: 1100;
 }
 
-.v5-sticky-whatsapp {
-  display: block;
-  background: #25D366;
+.v5-whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--brand-accent);
   color: #FFF;
   text-decoration: none;
-  text-align: center;
-  padding: 18px;
-  border-radius: 12px;
+  padding: 20px;
+  border-radius: 24px;
   font-weight: 800;
-  font-size: 18px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  font-size: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s var(--ease-emil);
 }
 
-/* Footer */
+.v5-whatsapp-btn:active {
+  transform: scale(0.96);
+}
+
+.v5-whatsapp-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Footer Marker */
 .v5-footer {
-  padding: 48px 24px 80px;
+  padding: 64px 24px 120px;
   text-align: center;
-  font-size: 12px;
-  color: #444;
 }
 
-.v5-footer a {
-  color: #666;
-  display: block;
-  margin-top: 8px;
+.v5-footer-marker {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.3;
 }
 
-/* Mobile Rules */
-@media (max-width: 480px) {
-  .v5-headline {
-    font-size: 32px;
-  }
+/* Animations */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Niche Specific Overrides */
+.archetype-cinematic {
+  letter-spacing: -0.5px;
+}
+
+.archetype-artisanal .v5-headline {
+  letter-spacing: -1px;
+}
+
+.archetype-artisanal .v5-offer-card {
+  border-radius: 12px;
+}
+
+.archetype-precision .v5-intent-btn {
+  border-radius: 8px;
+}
+
+/* Mobile Polish */
+@media (max-width: 380px) {
+  .v5-headline { font-size: 36px; }
 }

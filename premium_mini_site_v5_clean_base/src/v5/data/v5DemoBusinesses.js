@@ -1,184 +1,176 @@
 export const V5_DEMO_BUSINESSES = {
   tattoo: {
-    switcherLabel: 'Tattoo',
-    businessName: 'Obsidian Ink Studio',
-    niche: 'tattoo',
-    badge: 'Appointment-only tattoo studio',
-    headline: 'Custom tattoos designed before they touch skin.',
-    subheadline:
-      'Fine-line, script, realism, symbolic tattoos, and cover-up consultations in Koregaon Park.',
-    location: 'Koregaon Park, Pune',
-    primaryCta: 'Send My Tattoo Idea',
-    secondaryCta: 'View Tattoo Styles',
-    whatsappNumber: '919876543210',
-    instagramUrl: 'https://instagram.com/obsidianinkstudio',
-    defaultWhatsAppMessage:
-      'Hi, I want to discuss a custom tattoo idea with Obsidian Ink Studio.',
-    intents: ['Fine-line', 'Script', 'Realism', 'Cover-up', 'Pricing'],
+    id: "tattoo",
+    archetype: "cinematic",
+    switcherLabel: "Ink Studio",
+    businessName: "Obsidian Ink Studio",
+    niche: "High-End Blackwork & Fine Line",
+    location: "Koregaon Park, Pune",
+    headline: "Wear Your Story. <br/><span class='accent'>Forever.</span>",
+    subheadline: "Pune’s premier destination for custom blackwork. Where fine-art meets skin.",
+    badge: "Limited Slots for March",
+    primaryCta: "Reserve Consultation",
+    secondaryCta: "Explore Gallery",
+    whatsappNumber: "919876543210",
+    whatsappBaseMessage: "Hi Obsidian Ink, I'm interested in booking a consultation for a custom tattoo. My idea is: ",
+    instagramUrl: "https://instagram.com/obsidianink",
+    intents: [
+      { label: "First Tattoo", icon: "✨" },
+      { label: "Sleeve Project", icon: "🎨" },
+      { label: "Cover-up", icon: "🔄" }
+    ],
     offers: [
-      {
-        title: 'Fine-line concept',
-        meta: 'From ₹2,500',
-        description: 'Minimal symbols, delicate linework, small custom concepts.',
-        cta: 'Ask Fine-Line Price',
-        whatsappMessage: 'Hi, I want to ask about a fine-line tattoo concept.',
+      { 
+        id: "o1", 
+        title: "The Visionary Session", 
+        desc: "1-on-1 design consultation + custom moodboard + placement study.",
+        price: "₹1,500",
+        tag: "Recommended"
       },
-      {
-        title: 'Script placement',
-        meta: 'Consult required',
-        description: 'Names, phrases, dates, and custom placement planning.',
-        cta: 'Ask Script Tattoo Price',
-        whatsappMessage: 'Hi, I want to discuss a script tattoo placement.',
-      },
-      {
-        title: 'Cover-up review',
-        meta: 'Photo review first',
-        description: 'Send a photo of the old tattoo and get cover-up direction.',
-        cta: 'Ask Cover-Up Question',
-        whatsappMessage: 'Hi, I want to ask about a tattoo cover-up consultation.',
-      },
+      { 
+        id: "o2", 
+        title: "Full Day Immersion", 
+        desc: "8-hour session for large scale pieces. Lunch and aftercare kit included.",
+        price: "₹15,000",
+        tag: "Expert Only"
+      }
     ],
     proof: [
-      { title: 'Sterile setup', description: 'Single-use needles and clean workstation protocol.' },
-      { title: 'Custom sketch', description: 'Your design is discussed before the session.' },
-      { title: 'Aftercare guidance', description: 'Clear aftercare instructions after your tattoo.' },
+      { label: "Healed Results", count: "2,000+" },
+      { label: "Google Rating", count: "4.9/5" },
+      { label: "Years in Art", count: "12+" }
     ],
     visualStory: [
-      { title: 'Fine-line concept', type: 'Style board', description: 'Small symbols and delicate marks.' },
-      { title: 'Script placement', type: 'Placement', description: 'Readable script designed for the body area.' },
-      { title: 'Cover-up planning', type: 'Consult', description: 'Old tattoo reviewed before final suggestion.' },
+      { title: "Consult", desc: "Digital sketching and skin mapping." },
+      { title: "Precision", desc: "Single-needle fine line execution." },
+      { title: "Aftercare", desc: "Medical grade healing protocols." }
     ],
     objections: [
-      { question: 'How much will it cost?', answer: 'Pricing depends on size, placement, detail, and time.' },
-      { question: 'Can I bring a reference?', answer: 'Yes. Send references on WhatsApp before consultation.' },
-      { question: 'Is it safe?', answer: 'The studio follows sterile setup and single-use material practices.' },
+      { q: "How do you ensure safety?", a: "We use 100% disposable single-use equipment and hospital-grade sterilization." },
+      { q: "Can I bring my own design?", a: "Absolutely. We'll refine it to ensure it ages perfectly on skin." }
     ],
-    finalCta: {
-      headline: 'Your idea deserves a custom mark.',
-      subheadline: 'Send your idea, placement, and reference image on WhatsApp.',
-      buttonLabel: 'Send My Tattoo Idea',
-    },
+    finalCta: "Claim Your Slot",
+    theme: {
+      primary: "#0A0A0A",
+      accent: "#E53E3E",
+      surface: "#111111",
+      text: "#FFFFFF"
+    }
   },
-
   bakery: {
-    switcherLabel: 'Bakery',
-    businessName: 'Mira’s Bake Room',
-    niche: 'bakery',
-    badge: 'Home-baked custom orders',
-    headline: 'Custom cakes and dessert boxes made for your date.',
-    subheadline:
-      'Birthday cakes, brownies, dessert boxes, and weekend treats from Baner.',
-    location: 'Baner, Pune',
-    primaryCta: 'Ask Custom Cake Price',
-    secondaryCta: 'View Menu Ideas',
-    whatsappNumber: '919876543211',
-    instagramUrl: 'https://instagram.com/mirasbakeroom',
-    defaultWhatsAppMessage:
-      'Hi, I want to ask about a custom cake order from Mira’s Bake Room.',
-    intents: ['Cake price', 'Menu', 'Delivery area', 'Bulk order', 'Date availability'],
+    id: "bakery",
+    archetype: "artisanal",
+    switcherLabel: "Bake Room",
+    businessName: "Mira’s Bake Room",
+    niche: "Small-Batch Sourdough & Pastry",
+    location: "Baner, Pune",
+    headline: "Slow Fermented. <br/><span class='accent'>Deeply Flavored.</span>",
+    subheadline: "Traditional French techniques meet organic Indian grains. Baked at dawn, gone by noon.",
+    badge: "Fresh Batch Out Now",
+    primaryCta: "Order for Delivery",
+    secondaryCta: "View Menu",
+    whatsappNumber: "919876543211",
+    whatsappBaseMessage: "Hi Mira, I'd like to order from today's fresh batch. Do you have sourdough available?",
+    instagramUrl: "https://instagram.com/mirasbakeroom",
+    intents: [
+      { label: "Today's Special", icon: "🥖" },
+      { label: "Custom Cake", icon: "🎂" },
+      { label: "Baking Class", icon: "👩‍🍳" }
+    ],
     offers: [
-      {
-        title: 'Custom birthday cake',
-        meta: 'From ₹899',
-        description: 'Flavour, theme, weight, and date discussed before quote.',
-        cta: 'Ask Cake Price',
-        whatsappMessage: 'Hi, I want to ask about a custom birthday cake.',
+      { 
+        id: "b1", 
+        title: "The Weekend Basket", 
+        desc: "1 Sourdough Loaf + 2 Croissants + 1 Seasonal Jam.",
+        price: "₹850",
+        tag: "Best Seller"
       },
-      {
-        title: 'Dessert box',
-        meta: 'From ₹450',
-        description: 'Brownies, cookies, cupcakes, and weekend gifting boxes.',
-        cta: 'Ask Dessert Box Menu',
-        whatsappMessage: 'Hi, please send the dessert box menu.',
-      },
-      {
-        title: 'Bulk party order',
-        meta: 'Custom quote',
-        description: 'Cupcakes, jars, brownies, and party dessert planning.',
-        cta: 'Ask Bulk Order Price',
-        whatsappMessage: 'Hi, I want to ask about a bulk dessert order.',
-      },
+      { 
+        id: "b2", 
+        title: "Sourdough Masterclass", 
+        desc: "3-hour hands-on workshop. Take home your own starter culture.",
+        price: "₹2,500",
+        tag: "Workshop"
+      }
     ],
     proof: [
-      { title: 'Fresh batches', description: 'Made close to order date for better freshness.' },
-      { title: 'Baner delivery', description: 'Delivery areas confirmed before order.' },
-      { title: 'Custom flavours', description: 'Chocolate, vanilla, fruit, and theme options.' },
+      { label: "Natural Starter", count: "5 Years Old" },
+      { label: "Local Grains", count: "100% Organic" },
+      { label: "Happy Mornings", count: "500+ Daily" }
     ],
     visualStory: [
-      { title: 'Cake menu', type: 'Menu', description: 'Choose flavour, weight, and theme.' },
-      { title: 'Dessert box', type: 'Gifting', description: 'Weekend boxes for small celebrations.' },
-      { title: 'Party order', type: 'Bulk', description: 'Plan quantity and delivery slot.' },
+      { title: "Ferment", desc: "48-hour slow cold fermentation." },
+      { title: "Score", desc: "Hand-carved artistic crust patterns." },
+      { title: "Bloom", desc: "Stone-deck oven for the perfect ear." }
     ],
     objections: [
-      { question: 'How early should I order?', answer: 'Custom cakes are best booked 2–3 days in advance.' },
-      { question: 'Do you deliver?', answer: 'Delivery depends on area and timing.' },
-      { question: 'Can I share a reference?', answer: 'Yes. Send reference photos on WhatsApp.' },
+      { q: "Do you use preservatives?", a: "Never. Only flour, water, salt, and time." },
+      { q: "Is it suitable for vegans?", a: "All our sourdough loaves are 100% vegan." }
     ],
-    finalCta: {
-      headline: 'Tell us the date, flavour, and people count.',
-      subheadline: 'Get a clear quote before confirming your order.',
-      buttonLabel: 'Ask for Cake Availability',
-    },
+    finalCta: "Taste Real Bread",
+    theme: {
+      primary: "#FFFAF0",
+      accent: "#8B4513",
+      surface: "#FFF5E6",
+      text: "#2D1B0D"
+    }
   },
-
   detailing: {
-    switcherLabel: 'Car Detailing',
-    businessName: 'Axis Auto Detail Lab',
-    niche: 'detailing',
-    badge: 'Premium detailing lab',
-    headline: 'Make your car look newly delivered again.',
-    subheadline:
-      'Interior deep cleaning, polishing, ceramic coating, and paint protection in Wakad.',
-    location: 'Wakad, Pune',
-    primaryCta: 'Ask Detailing Price',
-    secondaryCta: 'View Services',
-    whatsappNumber: '919876543212',
-    instagramUrl: 'https://instagram.com/axisautodetaillab',
-    defaultWhatsAppMessage:
-      'Hi, I want to ask about car detailing prices at Axis Auto Detail Lab.',
-    intents: ['Interior clean', 'Ceramic coating', 'Polishing', 'Send car photos', 'Check slot'],
+    id: "detailing",
+    archetype: "precision",
+    switcherLabel: "Detail Lab",
+    businessName: "Axis Auto Detail Lab",
+    niche: "Luxury Surface Protection",
+    location: "Wakad, Pune",
+    headline: "Mirror Finish. <br/><span class='accent'>Zero Compromise.</span>",
+    subheadline: "Professional Ceramic Coating and Graphene Protection for those who demand perfection.",
+    badge: "Certified IGL Coatings",
+    primaryCta: "Book Inspection",
+    secondaryCta: "View Results",
+    whatsappNumber: "919876543212",
+    whatsappBaseMessage: "Hi Axis, I want to get a quote for ceramic coating for my car. Model: ",
+    instagramUrl: "https://instagram.com/axisautodetail",
+    intents: [
+      { label: "Ceramic Coating", icon: "🛡️" },
+      { label: "Paint Correction", icon: "✨" },
+      { label: "Interior Spa", icon: "🧼" }
+    ],
     offers: [
-      {
-        title: 'Interior deep clean',
-        meta: 'From ₹2,499',
-        description: 'Seats, dashboard, carpets, vents, and odor treatment.',
-        cta: 'Ask Interior Cleaning Price',
-        whatsappMessage: 'Hi, I want to ask about interior deep cleaning.',
+      { 
+        id: "d1", 
+        title: "The Graphene Shield", 
+        desc: "10H Hardness + 5 Year Warranty + 2 Stage Paint Correction.",
+        price: "₹35,000",
+        tag: "Ultimate"
       },
-      {
-        title: 'Ceramic coating',
-        meta: 'Quote after inspection',
-        description: 'Paint protection with gloss, hydrophobic finish, and durability options.',
-        cta: 'Ask Ceramic Coating Price',
-        whatsappMessage: 'Hi, I want to ask about ceramic coating for my car.',
-      },
-      {
-        title: 'Polish and gloss restore',
-        meta: 'Inspection needed',
-        description: 'Swirl reduction, gloss improvement, and exterior finish correction.',
-        cta: 'Send Car Photos',
-        whatsappMessage: 'Hi, I want to send car photos for polish/detailing advice.',
-      },
+      { 
+        id: "d2", 
+        title: "The Gloss Revival", 
+        desc: "Single stage polish + Premium Carnauba Wax + Engine Bay Clean.",
+        price: "₹8,000",
+        tag: "Essential"
+      }
     ],
     proof: [
-      { title: 'Before/after proof', description: 'Visible transformation after inspection and service.' },
-      { title: 'Product process', description: 'Service is suggested based on car condition.' },
-      { title: 'Slot-based work', description: 'Appointments help avoid rushed detailing.' },
+      { label: "Cars Protected", count: "1,200+" },
+      { label: "Certified Labs", count: "3 Centers" },
+      { label: "Gloss Meter", count: "95+ GU" }
     ],
     visualStory: [
-      { title: 'Interior reset', type: 'Before/after', description: 'Deep cleaning for seats and cabin.' },
-      { title: 'Gloss restore', type: 'Paint', description: 'Exterior correction and shine.' },
-      { title: 'Coating prep', type: 'Protection', description: 'Surface preparation before coating.' },
+      { title: "Decon", desc: "Chemical & Clay bar decontamination." },
+      { title: "Correct", desc: "Eliminating 99% of swirl marks." },
+      { title: "Protect", desc: "Infrared-cured ceramic bonding." }
     ],
     objections: [
-      { question: 'Do I need ceramic coating?', answer: 'It depends on paint condition, parking, and usage.' },
-      { question: 'Can I send photos first?', answer: 'Yes. Send car photos on WhatsApp for first advice.' },
-      { question: 'How long does detailing take?', answer: 'Most services require a few hours to a full day.' },
+      { q: "How long does it last?", a: "Our coatings are warranted for 3-5 years with proper maintenance." },
+      { q: "Does it protect from scratches?", a: "It protects against swirl marks and bird droppings, not deep scratches." }
     ],
-    finalCta: {
-      headline: 'Show us your car. We’ll suggest the right treatment.',
-      subheadline: 'Send photos and get a practical service recommendation.',
-      buttonLabel: 'Ask for Detailing Price',
-    },
-  },
+    finalCta: "Secure the Shine",
+    theme: {
+      primary: "#000000",
+      accent: "#007AFF",
+      surface: "#0A0A0A",
+      text: "#F5F5F7"
+    }
+  }
 };
